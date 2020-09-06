@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
-#include <iostream>
 using namespace std;
 
-int main(){
-    int i;
-    cin >> i;
-    cout << i * 2 + 1 << endl;
+int main() {
+    string a[3] = {"a", "b", "c"};
+    cout << a[0] << endl;
+    string b[2][2] = {{"a", "b"}, {"c", "d"}};
+    cout << b[1][0] << endl;
 } 
