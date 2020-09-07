@@ -1,27 +1,48 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void count_bomb(int H, int W, string A[][1], int p[2]) {
-    int tmp = 0;
+int bombCount(int h, int w, vector<vector<char>> vv, int x, int y) {
+    int cnt = 0;
+
     for (int i = -1; i <= 1; i++) {
-        if (p[0] + i < 0 || p[0] + i == H) continue;
+        if (x + i < 0 || x + i > h) continue;
         for (int j = -1; j <= 1; j++) {
             if (i == 0 && j == 0) continue;
-            if (p[1] + j < 0 || p[1] + j == W) continue;
-            if (A[p[0] + i][p[1] + j] == "#") tmp += 1;
+            if (y + j < 0 || y + j > w) continue;
+            if (vv[x + i][y + j] == '#') cnt += 1;
         }
     }
-    A[p[0]][p[1]] = to_string(tmp);
-}
+
+    return cnt;
+} 
 
 int main() {
     int H, W; cin >> H >> W;
-
-    string A[H][W];
+    vector<vector<char>> grid;
+    for (int i = 0; i < H; i++) {
+        vector<char> tmp_raw;
+        for (int j = 0; j < W; j++) {
+            char tmp;
+            cin >> tmp;
+            tmp_raw.push_back(tmp);
+        }
+        grid.push_back(tmp_raw);
+    }
+    
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < W; j++) {
-            cin >> A[i][j];
+            if (grid[i][j] == '.') {
+                int cnt = 0;
+                cnt = bombCount(H, W, grid, i, j); 
+                grid[i][j] = '0' + cnt;
+            }
         }
     }
-    cout << A[0][0];
+
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            cout << grid[i][j];
+        }
+        cout << endl;
+    }
 }
