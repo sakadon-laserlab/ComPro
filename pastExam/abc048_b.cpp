@@ -12,5 +12,8 @@ typedef long long ll;
 #define MAXR 100000 //配列の最大のrenge
 
 int main() {
-    
+    ll a,b,x; cin>>a>>b>>x;
+    ll A = (a+x-1)/x;
+    ll B = b/x;
+    cout << B-A+1;
 }
