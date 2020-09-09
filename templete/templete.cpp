@@ -16,6 +16,5 @@ typedef vector<string> VS;
 #define MAXR 100000 //配列の最大のrenge
 
 int main() {
-    VV(int) a(2,vector<int>(3,2));
-    cout <<
+    
 }
