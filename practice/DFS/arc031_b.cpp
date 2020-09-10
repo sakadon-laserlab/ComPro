@@ -30,32 +30,6 @@ typedef vector<string> VS;
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
-void dfs(VVI G, int x, int y, VVB &seen) {
-    seen[x][y] = true;
-    FOR(i,-1,2)FOR(j,-1,2) {
-        int nx = x + i;
-        int ny = y + j;
-        if (nx<0 || nx>=G[0].size() || ny<0 || ny>=G.size()) continue;
-        if (seen[nx][ny]) continue;
-        if (G[nx][ny] == 0) continue;
-        dfs(G,nx,ny,seen);
-    }
-}
-
 int main() {
-    int W, H; cin>>W>>H;
-    VVI G(H,VI(W));
-    REP(i,H)REP(j,W) cin>>G[i][j];
-    VVB seen(H,VB(W,false));
-
-    int res = 0;
-    REP(i,H)REP(j,W) {
-        if (seen[i][j] == true) continue;
-        if (G[i][j] == 0) continue;
-        
-        res++;
-        dfs(G,i,j,seen);
-    }
-
-    cout<<res;
+    
 }
