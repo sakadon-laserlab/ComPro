@@ -11,7 +11,7 @@ typedef long long ll;
 #define MOD 1000000007 //10^9+7
 #define MAXR 100000 //配列の最大のrenge
 
-void dfs(vector<vector<string>> G, int s[2], vector<vector<bool>> &seen){
+void dfs(vector<vector<string>> G, int p[2], vector<vector<bool>> &seen){
 
 }
 
@@ -23,11 +23,13 @@ int main() {
         G.PB(tmp);
     }
 
+    int s[2],g[2];
     REP(i,H)REP(j,W) {
-        if (G[i][j] == 's') int s[2] = {i,j};
-        if (G[i][j] == 'g') int g[2] = {i,j};
+        if (G[i][j] == 's') {s[0]=i; s[1]=j;}
+        if (G[i][j] == 'g') {g[0]=i; g[1]=j;}
     }
 
     vector<vector<bool>> seen(H, vector<bool>(W,false));
     seen[s[0]][s[1]] = true;
+
 }
