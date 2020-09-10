@@ -5,6 +5,8 @@ typedef long long ll;
 typedef pair<int,int> PII;
 typedef vector<int> VI;
 typedef vector<VI> VVI;
+typedef vector<bool> VB;
+typedef vector<VB> VVB;
 typedef vector<string> VS;
 //repetition
 #define FOR(i,a,b) for(int i=int(a); i<int(b); ++i)
