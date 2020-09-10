@@ -67,10 +67,10 @@ int main() {
         }
         if (res == true) {
 
-            cout << "Yes" << endl;
+            cout << "YES" << endl;
             return 0;
         }
         G[i][j] = 'x';
     }
-    cout << "No" << endl;
+    cout << "NO" << endl;
 }
