@@ -11,8 +11,22 @@ typedef long long ll;
 #define MOD 1000000007 //10^9+7
 #define MAXR 100000 //配列の最大のrenge
 
-void dfs(vector<vector<string>> G, int p[2], vector<vector<bool>> &seen){
+const int dx[4] = {1, 0, -1, 0};
+const int dy[4] = {0, 1, 0, -1};
 
+void dfs(vector<string> G, int x, int y, vector<vector<bool>> &seen){
+    seen[x][y] = true;
+
+    REP(i,4) {
+        int nx = x + dx[i];
+        int ny = y + dy[i];
+
+        if (nx < 0 || ny >= G.size() || nx < 0 || nx >= G[0].length()) continue;
+        if (G[nx][ny] == '#') continue;
+        if (seen[nx][ny]) continue;
+
+        dfs(G,nx,ny,seen);
+    }
 }
 
 int main() {
@@ -31,5 +45,8 @@ int main() {
 
     vector<vector<bool>> seen(H, vector<bool>(W,false));
     seen[s[0]][s[1]] = true;
+    dfs(G,s[0],s[1],seen);
 
+    if (seen[g[0]][g[1]]) cout << "Yes";
+    else cout << "No";
 }
