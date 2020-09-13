@@ -31,25 +31,5 @@ typedef vector<string> VS;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-    int N,M,s,t; cin>>N>>M>>s>>t;
-    VVI G(N);
-    REP(i,M) {
-        int a,b; cin>>a>>b;
-        G[a].PB(b);
-    }
-
-    VI dist(N,-1);
-    queue<int> que;
-    dist[s] = 0,que.push(s);
-    while (!que.empty()) {
-        int v = que.front(); que.pop();
-        for (auto nv : G[v]) {
-            if (dist[nv] == -1) {
-                dist[nv] = dist[v] + 1;
-                que.push(nv);
-            }
-        }
-    }
-    if (dist[t] != -1) cout<<"Yes"<<endl;
-    else cout<<"No"<<endl;
+    
 }
