@@ -8,7 +8,7 @@ typedef vector<VL> VVL;
 typedef vector<bool> VB;
 typedef vector<VB> VVB;
 typedef vector<string> VS;
-//temlate
+//template
 template<class T> inline bool chmin(T &a, T b) {if (a > b){a = b; return true;} return false;}
 template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} return false;}
 //repetition
@@ -34,5 +34,16 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
+    int N; cin >> N;
+    VL a(N); REP(i,N) cin >> a[i];
+    VL dp(N); REP(i,N) dp[i] = INF;
 
+    dp[0] = 0;
+
+    FOR(i,1,N) {
+        chmin(dp[i], dp[i-1] + abs(a[i] - a[i-1]));
+        if (i != 1) chmin(dp[i], dp[i-2] + abs(a[i] - a[i-2]));
+    }
+
+    cout << dp[N-1] << endl;
 }
