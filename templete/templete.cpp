@@ -8,6 +8,9 @@ typedef vector<VL> VVL;
 typedef vector<bool> VB;
 typedef vector<VB> VVB;
 typedef vector<string> VS;
+//temlate
+template<class T> inline bool chmin(T &a, T b) {if (a > b){a = b; return true;} return false;}
+template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} return false;}
 //repetition
 #define FOR(i,a,b) for(int i=int(a); i<int(b); ++i)
 #define FORD(i,a,b) for(int i=int(a); i<int(b); --i)
