@@ -2,7 +2,7 @@
 using namespace std;
 //typedef
 typedef long long ll;
-typedef pair<ll,ll> PLL;
+typedef pair<int,int> PII;
 typedef vector<ll> VL;
 typedef vector<VL> VVL;
 typedef vector<bool> VB;
@@ -31,5 +31,29 @@ typedef vector<string> VS;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-    
+    int Q; cin >> Q;
+
+    REP(i,Q) {
+        int n; cin >> n;
+        ll x; cin >> x;
+        VL a(n); REP(j,n) cin >> a[j];
+        int res = n+1;
+        int right = 0;
+        ll sum = 0;
+        REP(l,n) {
+            while (right < n && sum < x) {
+                sum += a[right];
+                right++;
+            }
+
+            if (sum < x) break;
+            res = min(res, right - l);
+
+            if (right == l) right++;
+            else sum -= a[l];
+        }
+
+        if (res < n+1) cout<<res<<endl;
+        else cout<<0<<endl;
+    }
 }
