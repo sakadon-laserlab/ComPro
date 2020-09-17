@@ -36,7 +36,28 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 
 int main() {
     string s,t; cin >> s >> t;
-    int dp[3100][3100] = {0};
+    int dp[s.size() + 1][t.size() + 1] = {0};
 
-    
+    //DPループ
+    REP(i,s.size())REP(j,t.size()) {
+        cout<<dp[i][j]<<endl;
+        if(s[i] == t[j]) chmax(dp[i+1][j+1], dp[i][j] + 1);
+        chmax(dp[i+1][j+1], dp[i+1][j]);
+        chmax(dp[i+1][j+1], dp[i][j+1]);
+    }
+
+    //復元
+    string res = "";
+    int i = (int)s.size(), j = (int)t.size();
+    while (i > 0 && j > 0) {
+        if (dp[i][j] == dp[i-1][j]) i--;
+        else if (dp[i][j] == dp[i][j-1]) j--;
+        else {
+           res = s[i-1] + res;
+           i--;
+           j--; 
+        }
+    }
+    cout<<dp[0][0]<<endl<<dp[1][1]<<endl<<dp[2][2]<<endl;
+    cout << res << endl;
 }
