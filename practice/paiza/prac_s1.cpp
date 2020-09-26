@@ -34,24 +34,30 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
-int main() {
-    int N; cin >> N;
-    VVL tate,yoko;
-    ll ans = 10000;
+int ans = 0;
+const int dx[4] = {1,0,-1,0};
+const int dy[4] = {0,-1,0,1};
 
-    REP(i,N) {
-        VL tmp(4); cin>>tmp[0]>>tmp[1]>>tmp[2]>>tmp[3];
-        if (tmp[0] == tmp[2]) tate.PB(tmp);
-        else yoko.PB(tmp);
+void dfs(VVL &G, int y, int x) {
+    G[y][x] = 0;
+
+    REP(k,4) {
+        int tmp_x = x + dx[k];
+        int tmp_y = y + dy[k];
+        if (tmp_x<0 || tmp_x>=G[0].size() || tmp_y<0 || tmp_y>=G.size()) continue;
+        if (G[tmp_y][tmp_x] == 0) continue;
+        dfs(G, tmp_y, tmp_x);
     }
+}
 
-    sort(ALL(tate));
-    sort(ALL(yoko),[](const vector<ll> &alpha,const vector<ll> &beta){return alpha[1] < beta[1];});
-
-    REP(i,tate.size()-1)FOR(j,i+1,tate.size())REP(k,yoko.size()-1)FOR(l,k+1,yoko.size()) {
-        if (tate[i][0]<yoko[k][0] || tate[i][0]<yoko[l][0] || tate[j][2]>yoko[k][2] || tate[j][2]>yoko[l][2]) continue;
-        if (yoko[l][3]>tate[i][3] || yoko[l][3]>tate[j][3] || yoko[k][1]<tate[i][1] || yoko[k][1]<tate[j][1]) continue;
-        ans = min(ans,(yoko[l][1]-yoko[k][1])*(tate[j][0]-tate[i][0]));
+int main() {
+    int m,n; cin>>m>>n;
+    VVL G(n,VL(m)); REP(i,n)REP(j,m) cin>>G[i][j];
+    REP(i,n)REP(j,m) {
+        if (G[i][j] == 1) {
+            ans++;
+            dfs(G, i, j);
+        } 
     }
 
     cout << ans << endl;
