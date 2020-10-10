@@ -35,5 +35,26 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-
+    ll N; cin >> N;
+    ll min = 0;
+    set<ll> G;
+    REP(i,N) {
+        ll tmp; cin >> tmp;
+        if (min < tmp) {
+            G.insert(tmp);
+            cout << min << endl;
+        }
+        else if (min > tmp) {
+            cout << min << endl;
+            continue;
+        }
+        else {
+            min += 1;
+            while (G.count(min)) {
+                G.erase(min);
+                min += 1;
+            }
+            cout << min << endl;
+        }
+    }
 }

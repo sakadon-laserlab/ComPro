@@ -35,7 +35,15 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-    char s,t; cin >> s >> t;
-    if (s == 'N') printf("%c\n", tolower(t));
-    else printf("%c\n", toupper(t));
+    ll T; cin >> T;
+    REP(i, T) {
+        ll N, A, B; cin >> N >> A >> B;
+        if (A + B > N) {cout << 0 << endl; continue;}
+        ll a = max(A,B), b = min(A,B);
+        ll res = 0;
+        ll res_a = pow((N - a + 1), 2);
+        ll res_b = pow((N - b + 1), 2);
+        ll res_kaburi = 0;
+        
+    }
 }
