@@ -35,5 +35,14 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-    
+    ll N;cin >> N;
+    ll m=0,y=0,c=0;
+    REP(i,N) {
+        ll tmp;cin >> tmp;
+        m += abs(tmp);
+        y += pow(tmp,2);
+        c = max(c,abs(tmp));
+    }
+    double y2 = sqrt(y);
+    printf("%lu\n%.15lf\n%lu\n" , m,y2,c);
 }

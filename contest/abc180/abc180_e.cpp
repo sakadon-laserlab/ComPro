@@ -35,14 +35,5 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-    ll N;cin >> N;
-    VL ans;
-    for (ll i=1; i<=sqrt(N); i++) {
-        if (N % i == 0) {
-            cout<<i<<endl;
-            if (pow(i,2) != N) ans.PB((ll)N/i);
-        }
-    }
-    reverse(ALL(ans));
-    for (ll x : ans) cout<<x<<endl;
+    
 }
