@@ -36,7 +36,8 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 
 int main() {
     ll N, M, K; cin >> N >> M >> K;
-    VL my(N), res;
+    VL my(N);
+    set<ll>  res;
     
     REP(i, N) cin >> my[i];
 
@@ -51,16 +52,17 @@ int main() {
 
         if (cnt >= K) {
             REP(j,N) {
-                if (tmp[j] == 3 && my[j] == 0) res.PB(j + 1);
+                if (tmp[j] == 3 && my[j] == 0) res.insert(j + 1);
             }
         }
     }
 
     if (res.size() == 0) cout << "no";
     else {
-        REP(i, res.size()) {
-            cout << res[i];
-            if (i != res.size() - 1) cout << " ";
+        for (auto x : res) {
+            cout << x;
+            int tmp = res.erase(x);
+            if (res.size() != 0) cout << " ";
         }
     }
 
