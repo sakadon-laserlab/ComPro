@@ -48,16 +48,6 @@ int main() {
 
     if (s<100) if (s==16 or s==24 or s==32 or s==48 or s==56 or s==64 or s==72 or s==88 or s==96) ans = "Yes";
 
-    else if((S.find('1') != string::npos)or(S.find('1') != string::npos)) if (
-        ((S.find('5') != string::npos) and (S.find('2') != string::npos))
-        ((S.find('3') != string::npos) and (S.find('6') != string::npos))
-    )
-
-
-   if(
-       ((S.find('2') != string::npos) and (S.find('4') != string::npos)) or
-   )
-
     else if(
         ((S.find('2') != string::npos) and (S.find('4') != string::npos)) or
         ((S.find('4') != string::npos) and (S.find('8') != string::npos)) or
