@@ -25,7 +25,6 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define SZ(a) int((a).size())
 #define EACH(i,c) for(typeof((c).begin()) i=(c).begin(); i!=(c).end(); ++i)
 #define EXIST(s,e) ((s).find(e)!=(s).end())
-#define EXIST_S(s,e) 
 #define SORT(c) sort((c).begin(),(c).end())
 //constant
 #define INF 1000000000000 //10^12:∞
