@@ -34,25 +34,37 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
+int dx[4] = {0,1,0,-1};
+int dy[4] = {1,0,-1,0};
+
+void myFunc (vector<vector<int>> &G, ll now_x, ll now_y, int muki) {
+    G[now_y][now_x] = 3; //bright
+    ll next_x = now_x + dx[muki];
+    ll next_y = now_y + dy[muki];
+    if (next_x>=G[0].size() or next_y>=G.size() or next_x<0 or next_y<0 or G[next_y][next_x]==2 or G[next_y][next_x]==1) return;
+    else myFunc(G, next_x, next_y, muki);
+}
+
 int main() {
-    ll N; cin >> N;
-    int cnt_1 = 0;
-    int cnt_2 = 0;
-    int judge = 0;
-
-    while (true) {
-        int tmp = N%10; N /= 10;
-        if (tmp%3 == 0) {judge=1;}
-        if (tmp%3 == 1) cnt_1++;
-        if (tmp%3 == 2) cnt_2++;
-
-        if (N == 0) break;
+    ll  h, w, n, m; cin>>h>>w>>n>>m;
+    vector<vector<int>> G(h, vector<int>(w,0));
+    REP(i,n){
+        ll x,y;cin>>x>>y;
+        G[x-1][y-1] = 1; //light
+    }
+    REP(i,m){
+        ll x,y;cin>>x>>y;
+        G[x-1][y-1] = 2; //block
     }
 
-    if(cnt_1>=3 or cnt_2>=3 or (cnt_1>=1 and cnt_2>=1)) judge=1;
-    int ans=max(cnt_1,cnt_2) - min(cnt_1,cnt_2);
-    ans%=3;
+    REP(i,h)REP(j,w) {
+        if (G[i][j] == 1) {
+            REP(k,4) myFunc(G,j,i,k);
+        }
+    }
 
-    if (judge == 0) cout << -1 << endl;
-    else cout << ans << endl;
+    ll ans=0;
+    REP(i,h)REP(j,w) if (G[i][j] == 1 or G[i][j] == 3) ans++;
+
+    cout << ans << endl;;
 }
