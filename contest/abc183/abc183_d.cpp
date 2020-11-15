@@ -35,5 +35,21 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-    
+     ll N,W;cin>>N>>W;
+     ll mymax=0;
+
+     VL time(200100, 0);
+
+     REP(i,N) {
+         ll s,t,p;cin>>s>>t>>p;
+         time[s]+=p;
+         time[t]-=p;
+     }
+     
+     REP(i,200099) {
+        time[i+1]+=time[i];
+        mymax = max(mymax, time[i+1]);
+     }
+     if (mymax <= W) cout << "Yes" << endl;
+     else cout << "No" << endl;
 }

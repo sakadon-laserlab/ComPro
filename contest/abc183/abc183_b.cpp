@@ -35,5 +35,10 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
 int main() {
-    
+    double sx,sy,gx,gy; cin>>sx>>sy>>gx>>gy;
+    double dy = sy + gy;
+    double dx = gx - sx;
+    double dydx = dy / dx;
+    double ans = sx + sy/dydx;
+    cout << fixed << setprecision(10) << ans << endl;
 }

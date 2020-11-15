@@ -34,6 +34,31 @@ template<class T> inline bool chmax(T &a, T b) {if (a < b){a = b; return true;} 
 #define dump(x)  cerr << #x << " = " << (x) << endl;
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl;
 
+void dfs(VL houmonzumi, ll &ans, VVL times, ll N, ll now_time, ll K, ll now) {
+    houmonzumi[now] = 1;
+
+    if (find(ALL(houmonzumi), 0) == houmonzumi.end()) {
+        if (now_time + times[now][0] == K) ans++;
+        return;
+    }
+
+    REP(i,N) {
+        if (houmonzumi[i] == 0) 
+            dfs(houmonzumi, ans, times, N, now_time+times[now][i], K, i);
+    }
+}
+
 int main() {
+    ll N,K;cin>>N>>K;
+    VVL times(N, VL(N, 0));
+    REP(i,N)REP(j,N) cin>>times[i][j];
+    ll ans = 0;
     
+    VL houmonzumi(N, 0);
+    houmonzumi[0] = 1;
+    ll now_time = 0;
+
+    dfs(houmonzumi, ans, times, N, now_time, K, 0);
+
+    cout << ans << endl;
 }
