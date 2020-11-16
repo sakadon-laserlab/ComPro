@@ -48,8 +48,8 @@ int main() {
      
      REP(i,200099) {
         time[i+1]+=time[i];
-        mymax = max(mymax, time[i+1]);
+        mymax = max(mymax, time[i]);
      }
-     if (mymax <= W) cout << "Yes" << endl;
-     else cout << "No" << endl;
+     if (mymax > W) cout << "No" << endl;
+     else cout << "Yes" << endl;
 }
