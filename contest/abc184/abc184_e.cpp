@@ -52,5 +52,5 @@ int main() {
 
     REP(i,h)REP(j,w) if (G[i][j] == 'S') dfs(G, j, i, seen);
 
-    REP(i,h)REP(j,w) if (G[i][j] =='G') 
+    
 }
